@@ -1,7 +1,7 @@
 export const CONFIG = {
   headerTitle: "День науки",
   headerDescription: "Присоединяйтесь скорее!",
-  date: new Date(2025, 11, 25),
+  date: new Date(2025, 11, 25, 12, 0),
   place: 'ГБОУ Школа №1533 "ЛИТ"',
   programme: [
     {

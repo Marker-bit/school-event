@@ -9,14 +9,17 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { JoinForm } from "./join-form";
+import { useState } from "react";
 
 export function JoinButton({
   buttonText = "Присоединиться",
 }: {
   buttonText?: string;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="leading-none">
           {buttonText}
@@ -30,7 +33,7 @@ export function JoinButton({
             Заполните форму для регистрации.
           </DialogDescription>
         </DialogHeader>
-        <JoinForm />
+        <JoinForm onSubmit={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   );

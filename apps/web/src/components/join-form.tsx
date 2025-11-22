@@ -36,7 +36,7 @@ export const joinFormSchema = z.object({
     .nullable(),
 });
 
-export function JoinForm() {
+export function JoinForm({ onSubmit }: { onSubmit?: () => void }) {
   const form = useForm({
     defaultValues: {
       name: "",
@@ -48,8 +48,9 @@ export function JoinForm() {
       onDynamic: joinFormSchema,
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
       await client.submit.post(value);
+      toast.success("Отправлено!");
+      onSubmit?.();
     },
   });
 
