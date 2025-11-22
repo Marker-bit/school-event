@@ -18,5 +18,4 @@ export async function createSubmission({
       programmeElement: mostInterestedIn,
     })
     .returning();
-  console.log(res);
 }

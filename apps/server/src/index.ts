@@ -4,6 +4,7 @@ import { cors } from "@elysiajs/cors";
 import z from "zod";
 import { CONFIG } from "@school-event/config";
 import { createSubmission } from "@school-event/db/functions";
+import { sendMessage } from "./telegram";
 
 const joinForm = z.object({
   name: z
@@ -27,6 +28,15 @@ const app = new Elysia()
     "/submit",
     async ({ body }) => {
       await createSubmission(body);
+      const messageLines = [
+        "Новая отправка формы!",
+        "<b>Имя</b>: " + body.name,
+        "<b>Класс</b>: " + body.grade,
+        "<b>Больше всего заинтересован в</b>: " +
+          (body.mostInterestedIn ?? "отсутствует"),
+      ];
+      console.log(messageLines.join("\n"));
+      await sendMessage(messageLines.join("\n"));
     },
     {
       body: joinForm,
