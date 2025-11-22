@@ -1,5 +1,9 @@
 {
   "name": "@school-event/config",
   "version": "0.0.0",
-  "private": true
+  "exports": {
+    ".": {
+      "default": "./index.ts"
+    }
+  }
 }
