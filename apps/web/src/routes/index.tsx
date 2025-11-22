@@ -23,7 +23,9 @@ function HomeComponent() {
       </div>
       <div className="h-dvh px-4 flex items-center">
         <div className="flex flex-col items-center">
-          <Badge variant="outline">Уже {humanReadableDate(CONFIG.date)}</Badge>
+          <Badge variant="outline">
+            Уже {humanReadableDate(CONFIG.date, { includeTime: false })}
+          </Badge>
           <h1 className="relative text-6xl md:text-7xl bg-clip-text pb-2 text-transparent bg-linear-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold">
             {CONFIG.headerTitle}
           </h1>
